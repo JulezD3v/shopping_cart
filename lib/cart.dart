@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping_cart/catalog.dart';
 import 'package:shopping_cart/data/product_details.dart';
 import 'package:shopping_cart/model/product.dart';
 import 'package:shopping_cart/provider/product_notifier.dart';
@@ -16,10 +17,26 @@ class _CatalogState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     var productNotifier = Provider.of<ProductNotifier>(context);
+    
+    List<Product> updatedCart = productNotifier.updateCart();// To avoid calling it multiple times
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Cart"),
         centerTitle: true,
+        // Added a navigator that traces the user back to the homepage
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+
+  //Finally added the Nav back to the homepage
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Catalog()),
+            );
+          },
+        ),
+        
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16),
@@ -33,7 +50,7 @@ class _CatalogState extends State<Cart> {
 
       body: ListView.builder(
 
-        itemCount: PRODUCT_DETAILS.length,
+        itemCount: updatedCart.length,
         itemBuilder: (context, index) {
           //final product = PRODUCT_DETAILS[index];
           List<Product> updatedCart = productNotifier.updateCart();
