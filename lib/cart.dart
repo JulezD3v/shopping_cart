@@ -37,15 +37,15 @@ class _CatalogState extends State<Cart> {
           },
         ),
         
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 16),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.shopping_basket),
-            ),
-          ),
-        ],
+        //actions: [
+        //   Padding(
+        //     padding: EdgeInsets.only(right: 16),
+        //     child: IconButton(
+        //       onPressed: () {},
+        //       icon: Icon(Icons.shopping_basket),
+        //     ),
+        //   ),
+        // ],
       ),
 
       body: ListView.builder(

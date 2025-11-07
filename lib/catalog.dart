@@ -22,11 +22,16 @@ class _CatalogState extends State<Catalog> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, "/cart");
-              },
-              icon: Icon(Icons.shopping_basket),
+            child: Badge(
+
+              label: Text(productNotifier.cartNumber().toString()),
+              isLabelVisible: productNotifier.cartNumber() != 0,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, "/cart");
+                },
+                icon: Icon(Icons.shopping_basket),
+              ),
             ),
           ),
         ],

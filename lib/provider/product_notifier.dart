@@ -15,5 +15,9 @@ class ProductNotifier extends ChangeNotifier{
     return cartItem;
   }
 
+  String cartNumber(){
+    String length= cartItem.length.toString();
+    return length;
+  }
 
 }
